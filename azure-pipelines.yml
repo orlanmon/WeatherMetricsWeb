@@ -9,14 +9,13 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '20.x'
-  displayName: 'Install Node.js'
 
-- script: |
-    npm install -g @angular/cli
-    npm install
-    ng build --prod
-  displayName: 'npm install and build'
+steps:
+  - task: AzureStaticWebApp@0
+    inputs:
+      app_location: "/"
+      api_location: ""
+      output_location: "wwwroot"
+    env:
+      azure_static_web_apps_api_token: $(deployment_token)
+
