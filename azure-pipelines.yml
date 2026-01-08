@@ -15,7 +15,7 @@ steps:
     inputs:
       app_location: "/"
       api_location: ""
-      output_location: "wwwroot"
+      output_location: "/"
     env:
       azure_static_web_apps_api_token: $(deployment_token)
 
