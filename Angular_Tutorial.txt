@@ -425,11 +425,50 @@ Azure Static Web Application Install with Azure DevOps  Not GitHub actions
 
 https://www.daveabrock.com/2021/04/01/static-web-apps-azure-pipelines/
 
+ #1 - Create Static Web App in Azure Portal
 
-# Node.js with Angular
-# Build a Node.js project that uses Angular.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+      Create the resource in the Azure portal, but select Other under Deployment details
+      to bypass the automatic CI/CD setup.
+      After creation, navigate to the new resource's overview page and select Manage deployment token.
+      Copy this token; you will need it for your pipeline.
+
+
+
+ #2 - Create Pipeline  - Select Code Source - GitHub Repository - Pipeline is Starter Pipeline
+ 
+ #3 - Configure Your Pipeline - edit manually to add AzureStaticWebApp Task.
+
+      Create secret variable deployment_token and assign to variable azure_static_web_apps_api_token
+      Which is used in AzureStaticWebApp Task azure_static_web_apps_api_token parameter
+      
+
+
+ Use this YAML Template     
+
+ trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  # Create a variable named 'deployment_token' in the pipeline variables UI
+  # and mark it as secret.
+  azure_static_web_apps_api_token: $(deployment_token) 
+
+steps:
+- task: AzureStaticWebApp@0
+  inputs:
+    app_location: "/" # Root of your Angular app
+    api_location: ""  # Location of your Azure Functions, if any
+    output_location: "dist/<your-app-name>/browser" # Your Angular build output path
+    azure_static_web_apps_api_token: $(azure_static_web_apps_api_token)
+
+
+
+
+Final Template will be:
+
 
 trigger:
 - main
@@ -445,7 +484,7 @@ steps:
       api_location: ""
       output_location: "/dist/weather-metrics-web/browser"
     env:
-      azure_static_web_apps_api_token: $(deployment_token)
+      azure_static_web_apps_api_token: $(azure_static_web_apps_api_token))
 
 
 
