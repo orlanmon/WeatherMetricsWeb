@@ -21,9 +21,7 @@ export class WeathermetricsdatadetailComponent {
    webForm!: FormGroup;
    weatherMetricsLog! : WeatherMetricsLog;
    strDialogName? : string;
-
-
-
+   
    constructor(private route: ActivatedRoute, private weathermetricsdataServ: WeathermetricsdataService, private router: Router, public dialog: MatDialog) {
 
    }

@@ -10,8 +10,10 @@ import { ResponseResult } from './responseresult';
 export class HttpService {
 
   public baseApiUrl: string = "";
-
-  constructor(private http: HttpClient) { }
+  
+  constructor(private http: HttpClient) { 
+    
+  }
 
   /*
   public get<T>(url: string, options?: { token?: string }): Observable<T> {

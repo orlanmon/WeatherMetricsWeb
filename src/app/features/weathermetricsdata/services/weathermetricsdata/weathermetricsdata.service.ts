@@ -6,14 +6,21 @@ import { HttpResponse } from "@angular/common/http";
 import { ResponseResult } from '../../../../shared/services/httpservice/responseresult';
 import { environment } from '../../../../../environments/environment';
 
+/*
 @Injectable({
   providedIn: 'root'
 })
+*/
+
+@Injectable()
+
 export class WeathermetricsdataService {
 
- constructor(private httpService: HttpService) { }
 
-  
+ constructor(private httpService: HttpService) { 
+ }
+
+
  getWeatherMetricLog(weatherMetricsLogId : bigint): Observable<ResponseResult<WeatherMetricsLog>> {
 
    

@@ -20,6 +20,14 @@ Note: This Creates the Directory
 ng new WeatherMetricsWeb --routing --style=css --no-ssr
 
 
+#3.1
+
+In the case of a existing angular project from git install node libraries the following way
+
+
+npm install
+
+
 #4
 
 Update directory structure
