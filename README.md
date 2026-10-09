@@ -1,3 +1,4 @@
 # WeatherMetricsWeb
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.6.
+This repository is an Angular 20 Application which use an ASP.NET CORE MVC RESTful Web API to perform CRUD operations on a Weather Metrics Data SQL Server Database.
+
